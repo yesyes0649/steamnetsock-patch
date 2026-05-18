@@ -1,6 +1,6 @@
-# Slay the Spire 2 Multiplayer Patch
+# SLSsteam SteamNetworkingSockets Patch
 
-Patch to fix multiplayer when using [SLSSteam](https://github.com/AceSLS/SLSSteam/)'s [FakeAppIds](https://github.com/AceSLS/SLSsteam/wiki/Configuration#fakeappids-map-of-positive-number--positive-number) feature for Slay the Spire 2.
+Patch to fix multiplayer in a small number of games when using [SLSsteam](https://github.com/AceSLS/SLSsteam/)'s [FakeAppIds](https://github.com/AceSLS/SLSsteam/wiki/Configuration#fakeappids-map-of-positive-number--positive-number) feature.
 
 # To use
 
@@ -9,13 +9,20 @@ Patch to fix multiplayer when using [SLSSteam](https://github.com/AceSLS/SLSStea
 
 - Copy the `fix.so` file to the game folder
 
-- Edit steam launch options
-  - if you're running the linux native build: `LD_AUDIT=./fix.so %command%`
-  - or if you're running via Proton: `LD_AUDIT=./fix.so %command% --rendering-driver vulkan`
+- Edit steam launch options: `LD_AUDIT=./fix.so %command%`
 
-- Multiplayer will now work. Note you can only play with users that have the same fake AppID as yourself. Online-Fix players have fake AppID 480
+- Multiplayer will now work. Note you can only play with users that have the same fake AppID as yourself. Online-Fix players usually have fake AppID 480.
 
 **Note:** A future steamclient update may break the fix. So, if you're having issues, check the `audit_patch.log` file. If it says "pattern not found", please open an issue.
+
+# Compatible Games
+
+Games that use "SteamNetworkingSockets" and work properly via GBE or OnlineFix should also be functional when using this fix.
+
+Confirmed to work:
+- Slay the Spire 2 (2868840)
+- Enshrouded (1203620)
+- DARK SOULS REMASTERED (570940) with [Seamless Co-op mod](https://www.nexusmods.com/darksoulsremastered/mods/899)
 
 # Explanation
 
@@ -27,5 +34,5 @@ This fix simply edits that function to immediately return 1.
 
 # Credits
 
-- [AceSLS](https://github.com/AceSLS/) for [SLSSteam](https://github.com/AceSLS/SLSSteam/) and also figuring out the game coldloads steamclient.so
+- [AceSLS](https://github.com/AceSLS/) for [SLSsteam](https://github.com/AceSLS/SLSsteam/) and also figuring out the game coldloads steamclient.so
 - [niwia](https://github.com/niwia) for finding the issue, testing the fixes and sacrificing his save file... sorry!
