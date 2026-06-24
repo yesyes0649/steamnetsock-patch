@@ -4,6 +4,8 @@ Patch to fix multiplayer in a small number of games when using [SLSsteam](https:
 
 # To use
 
+**WARNING:** Do not use this fix with games that have anti-cheat. This fix scans and modifies game memory, which any anti-cheat solution will easily detect. You have been warned.
+
 - Download the fix from releases, or build it from source
   - To build, run `gcc -O3 -shared -fPIC -o fix.so steamclient_audit.c -ldl`
 
@@ -22,7 +24,13 @@ Games that use "SteamNetworkingSockets" and work properly via GBE or OnlineFix s
 Confirmed to work:
 - Slay the Spire 2 (2868840)
 - Enshrouded (1203620)
+- RV There Yet (3949040)
+- Teardown (1167630)
+- Lethal Company (1966720)
+- Tabletop Simulator (286160)
+- Schedule I (3164500)
 - DARK SOULS REMASTERED (570940) with [Seamless Co-op mod](https://www.nexusmods.com/darksoulsremastered/mods/899)
+- ... and more (you can find more games listed in the SLS Discord)
 
 # Explanation
 
@@ -36,3 +44,4 @@ This fix simply edits that function to immediately return 1.
 
 - [AceSLS](https://github.com/AceSLS/) for [SLSsteam](https://github.com/AceSLS/SLSsteam/) and also figuring out the game coldloads steamclient.so
 - [niwia](https://github.com/niwia) for finding the issue, testing the fixes and sacrificing his save file... sorry!
+- [Aguga](https://github.com/Aguga2201) for testing a ton of games
