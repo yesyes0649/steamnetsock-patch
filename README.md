@@ -4,16 +4,35 @@ Patch to fix multiplayer in a small number of games when using [SLSsteam](https:
 
 # To use
 
-**WARNING:** Do not use this fix with games that have anti-cheat. This fix scans and modifies game memory, which any anti-cheat solution will easily detect. You have been warned.
+> [!WARNING]
+> Do not use this fix with games that have anti-cheat. This fix scans and modifies game memory, which any anti-cheat solution will easily detect.
+
+<details open>
+  <summary><b>Installation via h3adcr-b</b></summary>
+
+- If you installed SLSsteam using [h3adcr-b](https://github.com/Deadboy666/h3adcr-b/), you already have the patch file downloaded. **Set launch option:**
+```
+LD_AUDIT="$HOME/.config/SLSsteam/tools/netsock/netsock.so" %command%
+```
+
+- Multiplayer will now work. Note you can only play with users that have the same fake AppID as yourself. Online-Fix players usually have fake AppID 480.
+
+</details>
+
+<details>
+  <summary><b>Manual Installation</b></summary>
 
 - Download the fix from releases, or build it from source
   - To build, run `gcc -O3 -shared -fPIC -o fix.so steamclient_audit.c -ldl`
 
 - Copy the `fix.so` file to the game folder
 
-- Edit steam launch options: `LD_AUDIT=./fix.so %command%`
+- Edit steam launch options:
+```
+LD_AUDIT=./fix.so %command%
+```
 
-- Multiplayer will now work. Note you can only play with users that have the same fake AppID as yourself. Online-Fix players usually have fake AppID 480.
+</details>
 
 **Note:** A future steamclient update may break the fix. So, if you're having issues, check the `audit_patch.log` file. If it says "pattern not found", please open an issue.
 
