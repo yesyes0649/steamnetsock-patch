@@ -12,7 +12,7 @@ Patch to fix multiplayer in a small number of games when using [SLSsteam](https:
 
 - If you installed SLSsteam using [h3adcr-b](https://github.com/Deadboy666/h3adcr-b/), you already have the patch file downloaded. **Set launch option:**
 ```
-LD_AUDIT="$HOME/.config/SLSsteam/tools/netsock/netsock.so" %command%
+env LD_AUDIT="$HOME/.config/SLSsteam/tools/netsock/netsock.so" %command%
 ```
 
 - Multiplayer will now work. Note you can only play with users that have the same fake AppID as yourself. Online-Fix players usually have fake AppID 480.
